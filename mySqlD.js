@@ -16,3 +16,17 @@ pmysql.createPool({
     console.log("pool error: " + e)
 })
 
+//Function to create new Promise where data is read in for Students 
+var getStudent = function() {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM student')
+        .then((data) => {
+            console.log(data)
+            resolve(data)
+        })
+        .catch((error) => {
+            console.log(error)
+            reject(error)
+        })          
+    })
+}
