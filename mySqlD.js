@@ -46,5 +46,21 @@ var getGrades = function() {
     })
 }
 
+//Function to delete student by id
+var deleteStudent = (id) => {
+    return new Promise((resolve, reject) => {
+        var myQuery = {
+            sql: "DELETE FROM student_table WHERE student_id = id",
+            values: [id]
+        }
+        pool.query(myQuery, (error, results) => {
+            if (error) {
+                return reject(error);
+            }
+            resolve(results); 
+        });
+    })
+}
+
 //Allows other files to use function
-module.exports = { getStudent, getGrades }
+module.exports = { getStudent, getGrades, deleteStudent }
