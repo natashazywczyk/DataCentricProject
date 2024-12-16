@@ -17,17 +17,19 @@ pmysql.createPool({
 })
 
 //Function to get a student by id
-var getStudentById = (id) => {
+var getStudentById = (sid) => {
     return new Promise((resolve, reject) => {
         var myQuery = {
-            sql: "SELECT * FROM student WHERE sid = id",
-            values: [id]
+            sql: "SELECT * FROM student WHERE sid = sid",
+            values: [sid]
         }
         pool.query(myQuery, (error, result) => {
             if (error) {
-                return reject(error);
+                console.log(error)
+                reject(error);
             }
             if (result.length > 0) {
+                console.log(result[0])
                 resolve(result[0]);
             }
         });
