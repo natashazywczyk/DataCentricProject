@@ -6,12 +6,12 @@
     <!-- Student Update Form -->
     <form action="/students/edit/<%= student.sid %>" method="POST">
         <label for="sid">Student ID</label>
-        <input type="text" name="sid" id="sid" value="<%= student.sid %>" readonly />
+        <input type="text" name="sid" id="sid" value="<%= student.sid %>" readonly /> <!--Dont allow user to change sid-->
 
         <br>
 
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<%= student.name %>" required />
+        <input type="text" name="name" id="name" value="<%= student.name %>" required minlength="2"/><!--Minimum of 2 characters-->
 
         <br>
 
