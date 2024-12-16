@@ -49,6 +49,26 @@ var getStudent = function() {
     })
 }
 
+//Function ot edit student details
+var updateStudent = (studentId, newName, newAge) => {
+    return new Promise((resolve, reject) => {
+        var myQuery = {
+            sql: "UPDATE student SET name = name, age = age WHERE sid = studentid",
+            values: [newName, newAge, studentId]  //values of name, age, and sid
+        };
+        pool.query(myQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            }
+            if (result.affectedRows > 0) {
+                resolve("Update successful");
+            } else {
+                reject("No student with that ID was found");
+            }
+        });
+    });
+}
+
 //Function to create new Promise where data is read in for Grades for students for each module
 var getGrades = function() {
     return new Promise((resolve, reject) => {
@@ -65,4 +85,4 @@ var getGrades = function() {
 }
 
 //Allows other files to use function
-module.exports = { getStudent, getGrades, getStudentById }
+module.exports = { getStudent, getGrades, getStudentById, updateStudent }
