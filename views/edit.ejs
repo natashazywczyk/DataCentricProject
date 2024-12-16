@@ -3,7 +3,6 @@
 </header>
 
 <body>
-    <!-- Student Update Form -->
     <form action="/students/edit/<%= student.sid %>" method="POST">
         <label for="sid">Student ID</label>
         <input type="text" name="sid" id="sid" value="<%= student.sid %>" readonly /> <!--Dont allow user to change sid-->

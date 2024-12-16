@@ -3,26 +3,26 @@
 </header>
 
 <body>
-        <form action="/students/add" method="POST">
-            <label for="sid">Student ID</label>
-            <input type="text" name="sid" id="sid" required minlength="4" /> <!--Dont allow user to change sid-->
+    <form action="/students/add" method="POST">
+        <label for="sid">Student ID</label>
+        <input type="text" name="sid" id="sid" required minlength="4" /> <!--Dont allow user to change sid-->
     
-            <br>
-    
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required minlength="2"/><!--Minimum of 2 characters-->
-    
-            <br>
-    
-            <label for="age">Age</label>
-            <input type="number" name="age" id="age" min="18" required /> <!-- Make sure the ag eis at least 18-->
-    
-            <br>
-    
-            <button type="submit">Add</button>
-        </form>
-    
-        <a href="/students">Back to Students</a>
         <br>
-        <a href="/">Home</a>
+    
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required minlength="2"/><!--Minimum of 2 characters-->
+    
+        <br>
+    
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" min="18" required /> <!-- Make sure the ag eis at least 18-->
+    
+        <br>
+    
+        <button type="submit">Add</button>
+    </form>
+    
+    <a href="/students">Back to Students</a>
+    <br>
+    <a href="/">Home</a>
 </body>
