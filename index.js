@@ -29,3 +29,16 @@ app.get("/students", (req, res) => {
         res.send(error)
     })
 })
+
+//Grades Page
+//Make sure student id appears at top of page, with menu to navigate to 3 different menus
+app.get("/grades", (req, res) => {
+    mySqlD.getGrades()
+    .then((data) => {
+        console.log(JSON.stringify(data)) //changes json file to string
+        res.render("grades", {gradesList: data}) //assign value to variables
+    })
+    .catch((error) => {
+        res.send(error)
+    })
+})
