@@ -1,3 +1,21 @@
 <header>
     <h1>Update Student</h1>
 </header>
+
+<body>
+    <!-- Student Update Form -->
+    <form action="/students/edit/<%= student.sid %>" method="POST">
+        <label for="sid">Student ID</label>
+        <input type="text" name="sid" id="sid" value="<%= student.sid %>" readonly />
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= student.name %>" required />
+
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" value="<%= student.age %>" min="18" required />
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/students">Back to Students</a>
+</body>
