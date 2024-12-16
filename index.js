@@ -69,7 +69,7 @@ app.post("/students/edit/:sid", (req, res) => {
     }
 
     // Update the student in the database
-    mySqlD.updateStudent(studentId, name, age)
+    mySqlD.addStudent(studentId, name, age)
         .then(() => {
             res.redirect("/students");//Go back to student page
         })
@@ -95,7 +95,7 @@ app.post("/students/add", (req, res) => {
     }
 
     // Add the student to the database
-    mySqlD.addStudent(name, age)
+    mySqlD.addStudent(sid, name, age)
         .then(() => {
             res.redirect("/students"); //Go back to student page after
         })
