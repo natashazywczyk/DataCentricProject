@@ -71,6 +71,32 @@ app.post("/students/edit/:sid", (req, res) => {
         });
 });
 
+//POST for new added student
+app.post("/students/add", (req, res) => {
+    const { name, age } = req.body;
+
+    //Make sure all fields are valid
+    //Check name
+    if (!name || name.length < 2) {
+        res.status(400).send("Invalid name, must be 2 characters long");
+    }
+    //Make sure all fields are valid
+    //Check age
+    if (age < 18) {
+        res.status(400).send("Invalid age, student must be at least 18");
+    }
+
+    // Add the student to the database
+    mySqlD.addStudent(name, age)
+        .then(() => {
+            res.redirect("/students"); //Go back to student page after
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Error adding student.");
+        });
+});
+
 
 //Grades Page
 //Make sure student id appears at top of page, with menu to navigate to 3 different menus
