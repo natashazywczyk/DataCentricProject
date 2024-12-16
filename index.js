@@ -51,13 +51,9 @@ app.get("/students/add", (req, res) => {
 // POST for updates
 app.post("/students/edit/:sid", (req, res) => {
     const studentId = req.params.sid;
-    const { sid, name, age } = req.body;
+    const { name, age } = req.body;
 
     //Make sure all fields are valid
-    //Check student id
-    if (sid.length < 4) {
-        res.status(400).send("Invalid ID, must be at least 4 characters long");
-    }
     //Check name
     if (!name || name.length < 2) {
         res.status(400).send("Invalid name, must be 2 characters long");
@@ -69,7 +65,7 @@ app.post("/students/edit/:sid", (req, res) => {
     }
 
     // Update the student in the database
-    mySqlD.addStudent(studentId, name, age)
+    mySqlD.updateStudent(studentId, name, age)
         .then(() => {
             res.redirect("/students");//Go back to student page
         })
@@ -81,14 +77,17 @@ app.post("/students/edit/:sid", (req, res) => {
 
 //POST for new added student
 app.post("/students/add", (req, res) => {
-    const { name, age } = req.body;
+    const { sid, name, age } = req.body;
 
     //Make sure all fields are valid
+    //Check student id
+    if (sid.length < 4) {
+        res.status(400).send("Invalid ID, must be at least 4 characters long");
+    }
     //Check name
     if (!name || name.length < 2) {
         res.status(400).send("Invalid name, must be 2 characters long");
     }
-    //Make sure all fields are valid
     //Check age
     if (age < 18) {
         res.status(400).send("Invalid age, student must be at least 18");
