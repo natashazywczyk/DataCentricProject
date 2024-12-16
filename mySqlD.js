@@ -16,6 +16,24 @@ pmysql.createPool({
     console.log("pool error: " + e)
 })
 
+//Function to get a student by id
+var getStudentById = (id) => {
+    return new Promise((resolve, reject) => {
+        var myQuery = {
+            sql: "SELECT * FROM student WHERE sid = id",
+            values: [id]
+        }
+        pool.query(myQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            }
+            if (result.length > 0) {
+                resolve(result[0]);
+            }
+        });
+    })
+}
+
 //Function to create new Promise where data is read in for Students 
 var getStudent = function() {
     return new Promise((resolve, reject) => {
@@ -47,4 +65,4 @@ var getGrades = function() {
 }
 
 //Allows other files to use function
-module.exports = { getStudent, getGrades }
+module.exports = { getStudent, getGrades, getStudentById }
