@@ -1,0 +1,19 @@
+<header>
+    <h1>G00415696</h1>
+</header>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    
+    <% studentsList.forEach((students) => { %>
+        <tr>
+            <td><%= students.sid %></td>
+            <td><%= students.name %></td>
+            <td><%= students.age %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
+        </tr>
+    <% }) %>
+</table>
+    
