@@ -30,3 +30,6 @@ var getStudent = function() {
         })          
     })
 }
+
+//Allows other files to use function
+module.exports = { getStudent }
