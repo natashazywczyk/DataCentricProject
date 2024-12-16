@@ -42,3 +42,9 @@ app.get("/grades", (req, res) => {
         res.send(error)
     })
 })
+
+//Lecturers Page
+//Make sure student id appears at top of page, with menu to navigate to 3 different menus
+app.get("/lecturers", (req, res) => {
+    res.render("lecturers")
+})
