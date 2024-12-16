@@ -30,6 +30,19 @@ app.get("/students", (req, res) => {
     })
 })
 
+//Update Student Page
+app.get("/students/edit/:sid", (req, res) => {
+    const studentId = req.params.sid;
+    mySqlD.getStudentById(studentId)
+        .then((data) => {
+            console.log(JSON.stringify(data)) //changes json file to string
+
+            const student = data;
+            res.render("edit", { student }); 
+        })
+        .catch((err) => res.status(500).send(err));
+});
+
 
 //Grades Page
 //Make sure student id appears at top of page, with menu to navigate to 3 different menus
