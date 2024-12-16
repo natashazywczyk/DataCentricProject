@@ -30,10 +30,6 @@ app.get("/students", (req, res) => {
     })
 })
 
-//Delete student
-app.get("/student/delete/:id", (req, res) => {
-    res.send(req.params.id)
-})
 
 //Grades Page
 //Make sure student id appears at top of page, with menu to navigate to 3 different menus
