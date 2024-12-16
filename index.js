@@ -51,9 +51,13 @@ app.get("/students/add", (req, res) => {
 // POST for updates
 app.post("/students/edit/:sid", (req, res) => {
     const studentId = req.params.sid;
-    const { name, age } = req.body;
+    const { sid, name, age } = req.body;
 
     //Make sure all fields are valid
+    //Check student id
+    if (sid.length < 4) {
+        res.status(400).send("Invalid ID, must be at least 4 characters long");
+    }
     //Check name
     if (!name || name.length < 2) {
         res.status(400).send("Invalid name, must be 2 characters long");
