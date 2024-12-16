@@ -44,6 +44,10 @@ app.get("/students/edit/:sid", (req, res) => {
         .catch((err) => res.status(500).send(err));
 });
 
+app.get("/students/add", (req, res) => {
+    res.render("add");
+})
+
 // POST for updates
 app.post("/students/edit/:sid", (req, res) => {
     const studentId = req.params.sid;
