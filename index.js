@@ -31,6 +31,7 @@ app.get("/students", (req, res) => {
 })
 
 //Update Student Page
+//Get student in url to match with sid in database
 app.get("/students/edit/:sid", (req, res) => {
     const studentId = req.params.sid;
     mySqlD.getStudentById(studentId)
@@ -41,6 +42,27 @@ app.get("/students/edit/:sid", (req, res) => {
             res.render("edit", { student }); 
         })
         .catch((err) => res.status(500).send(err));
+});
+
+// POST for updates
+app.post("/students/edit/:sid", (req, res) => {
+    const studentId = req.params.sid;
+    const { name, age } = req.body;
+
+    //Make sure all fields are valid ie age > 18, name > 2 characters
+    if (!name || !age || age < 18 || name.length < 2) {
+        return res.status(400).send("Invalid name or age.");
+    }
+
+    // Update the student in the database
+    mySqlD.updateStudent(studentId, name, age)
+        .then(() => {
+            res.redirect("/students");//Go back to student page
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Error updating student.");
+        });
 });
 
 
