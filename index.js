@@ -49,9 +49,15 @@ app.post("/students/edit/:sid", (req, res) => {
     const studentId = req.params.sid;
     const { name, age } = req.body;
 
-    //Make sure all fields are valid ie age > 18, name > 2 characters
-    if (!name || !age || age < 18 || name.length < 2) {
-        return res.status(400).send("Invalid name or age.");
+    //Make sure all fields are valid
+    //Check name
+    if (!name || name.length < 2) {
+        res.status(400).send("Invalid name, must be 2 characters long");
+    }
+    //Make sure all fields are valid
+    //Check age
+    if (age < 18) {
+        res.status(400).send("Invalid age, student must be at least 18");
     }
 
     // Update the student in the database
