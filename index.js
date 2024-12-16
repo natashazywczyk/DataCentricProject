@@ -16,3 +16,16 @@ app.listen(3004, () => {
 app.get("/", (req, res) => {
     res.render("mainpage")
 })
+
+//Students Page
+//Make sure student id appears at top of page, with menu to navigate to 3 different menus
+app.get("/students", (req, res) => {
+    mySqlD.getStudent()
+    .then((data) => {
+        console.log(JSON.stringify(data)) //changes json file to string
+        res.render("student", {studentsList: data}) //assign value to variables
+    })
+    .catch((error) => {
+        res.send(error)
+    })
+})
