@@ -53,7 +53,7 @@ var getStudent = function() {
 var updateStudent = (studentId, newName, newAge) => {
     return new Promise((resolve, reject) => {
         var myQuery = {
-            sql: "UPDATE student SET name = name, age = age WHERE sid = studentid",
+            sql: "UPDATE student SET name = newName, age = newAge WHERE sid = studentId",
             values: [newName, newAge, studentId]  //values of name, age, and sid
         };
         pool.query(myQuery, (error, result) => {
