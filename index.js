@@ -10,3 +10,9 @@ app.set('view engine', 'ejs') //adds ejs to project
 app.listen(3004, () => {
     console.log('Running on port 3004')
 })
+
+//HomePage
+//Make sure student id appears at top of page, with menu to navigate to 3 different menus
+app.get("/", (req, res) => {
+    res.render("mainpage")
+})
