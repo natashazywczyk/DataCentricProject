@@ -13,6 +13,7 @@
             <td><%= students.sid %></td>
             <td><%= students.name %></td>
             <td><%= students.age %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
+            <td><a href="/student/delete/<%= students.sid %>">Delete</a></td>
         </tr>
     <% }) %>
 </table>
