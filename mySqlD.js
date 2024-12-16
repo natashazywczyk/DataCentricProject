@@ -31,5 +31,20 @@ var getStudent = function() {
     })
 }
 
+//Function to create new Promise where data is read in for Grades for students for each module
+var getGrades = function() {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM grade')
+        .then((data) => {
+            console.log(data)
+            resolve(data)
+        })
+        .catch((error) => {
+            console.log(error)
+            reject(error)
+        })
+    })
+}
+
 //Allows other files to use function
-module.exports = { getStudent }
+module.exports = { getStudent, getGrades }
