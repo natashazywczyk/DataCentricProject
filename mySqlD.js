@@ -71,6 +71,25 @@ var updateStudent = (studentId, newName, newAge) => {
     });
 }
 
+//Function to add student to database
+var addStudent = (sid, name, age) => {
+    return new Promise((resolve, reject) => {
+        var myQuery = {
+            sql: "INSERT INTO student (sid, name, age) VALUES (sid, name, age)",
+            values: [sid, name, age]
+        };
+
+        pool.query(myQuery, (error, result) => {
+            if (error) {
+                console.log(error);
+                reject(error);
+            }
+            // Resolve when the student is successfully added
+            resolve(result);
+        });
+    });
+};
+
 //Function to create new Promise where data is read in for Grades for students for each module
 var getGrades = function() {
     return new Promise((resolve, reject) => {
@@ -87,4 +106,4 @@ var getGrades = function() {
 }
 
 //Allows other files to use function
-module.exports = { getStudent, getGrades, getStudentById, updateStudent }
+module.exports = { getStudent, getGrades, getStudentById, updateStudent, addStudent }
