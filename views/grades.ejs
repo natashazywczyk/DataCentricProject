@@ -11,9 +11,9 @@
 
     <% gradesList.forEach((grade) => { %>
         <tr>
-            <td><%= grade.sid %></td>
-            <td><%= grade.mid %></td>
-            <td><%= grade.grade %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
+            <td><%= grade.StudentName %></td>
+            <td><%= grade.ModuleName %></td>
+            <td><%= grade.Grade %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
         </tr>
     <% }) %>
 </table>
