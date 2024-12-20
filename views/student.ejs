@@ -1,24 +1,31 @@
 <header>
     <h1>G00415696</h1>
 </header>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Action</th>
-    </tr>
-    
-    <% studentsList.forEach((students) => { %>
-        <tr>
-            <td><%= students.sid %></td>
-            <td><%= students.name %></td>
-            <td><%= students.age %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
-            <td>
-                <a href="/students/edit/<%= students.sid %>">Update</a>
-            </td>
 
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Action</th>
         </tr>
-    <% }) %>
-</table>
+        
+        <% studentsList.forEach((students) => { %>
+            <tr>
+                <td><%= students.sid %></td>
+                <td><%= students.name %></td>
+                <td><%= students.age %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
+                <td>
+                    <a href="/students/edit/<%= students.sid %>">Update</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+    <br> 
+
+    <a href="/students/add">Add Student</a>
+
+</body>
     
