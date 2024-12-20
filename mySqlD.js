@@ -93,15 +93,17 @@ var addStudent = (sid, name, age) => {
 //Function to create new Promise where data is read in for Grades for students for each module
 var getGrades = function() {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM grade')
-        .then((data) => {
-            console.log(data)
-            resolve(data)
-        })
-        .catch((error) => {
-            console.log(error)
-            reject(error)
-        })
+        var myQuery = {
+            sql: "SELECT student.name AS StudentName, module.name AS ModuleName, grade.grade AS Grade FROM grade INNER JOIN student ON grade.sid = student.sid INNER JOIN module ON grade.mid = module.mid ORDER BY student.name ASC, grade.grade ASC"
+        };
+
+        pool.query(myQuery, (error, result) => {
+            if (error) {
+                console.log(error);
+                reject(error);
+            }
+            resolve(result);
+        });
     })
 }
 
