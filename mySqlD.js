@@ -94,7 +94,7 @@ var addStudent = (sid, name, age) => {
 var getGrades = function() {
     return new Promise((resolve, reject) => {
         var myQuery = {
-            sql: "SELECT student.name AS StudentName, module.name AS ModuleName, grade.grade AS Grade FROM grade INNER JOIN student ON grade.sid = student.sid INNER JOIN module ON grade.mid = module.mid ORDER BY student.name ASC, grade.grade ASC"
+            sql: "SELECT student.name AS StudentName, module.name AS ModuleName, grade.grade AS Grade FROM student LEFT JOIN grade ON student.sid = grade.sid LEFT JOIN module ON grade.mid = module.mid ORDER BY student.name ASC, grade.grade ASC"
         };
 
         pool.query(myQuery, (error, result) => {
