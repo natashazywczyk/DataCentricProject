@@ -2,18 +2,23 @@
     <h1>G00415696</h1>
 </header>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Module</th>
-        <th>Grade</th>
-    </tr>
-
-    <% gradesList.forEach((grade) => { %>
+<body>
+    <table>
         <tr>
-            <td><%= grade.StudentName %></td>
-            <td><%= grade.ModuleName %></td>
-            <td><%= grade.Grade %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
+            <th>ID</th>
+            <th>Module</th>
+            <th>Grade</th>
         </tr>
-    <% }) %>
-</table>
+
+        <% gradesList.forEach((grade) => { %>
+            <tr>
+                <td><%= grade.StudentName %></td>
+                <td><%= grade.ModuleName %></td>
+                <td><%= grade.Grade %></td> <!--Make sure after . is what the variable is called within data array, initialised in function in mySqlD.js-->
+            </tr>
+        <% }) %>
+    </table>
+
+    <br>
+    <a href="/">Home</a>
+</body>
