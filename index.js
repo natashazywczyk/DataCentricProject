@@ -1,6 +1,7 @@
 var express = require('express')
 let ejs = require('ejs') //download for ui
 var mySqlD = require('./mySqlD') //allows access to MySQL database read
+var myLecturers = require('./myMondoDB');
 
 var app = express() //creates express application
 
@@ -120,6 +121,16 @@ app.get("/grades", (req, res) => {
 
 //Lecturers Page
 //Make sure student id appears at top of page, with menu to navigate to 3 different menus
-app.get("/lecturers", (req, res) => {
-    res.render("lecturers")
-})
+// Route: View all lecturers
+app.get('/lecturers', async (req, res) => {
+    try {
+        // Fetch all lecturers from the MongoDB collection
+        const lecturers = await coll.find().toArray();
+
+        // Render the lecturers.ejs template and pass the lecturers data
+        res.render('lecturers', { lecturers });
+    } catch (err) {
+        res.status(500).send('Error fetching lecturers: ' + err);
+    }
+});
+
