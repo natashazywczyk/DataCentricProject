@@ -19,3 +19,16 @@ const getLecturers = async () => {
       return [];
     }
 };
+
+// Function to delete a lecturer by ID
+const deleteLecturerById = async (lecturerId) => {
+    try {
+      const result = await coll.deleteOne({ _id: lecturerId });
+      return result.deletedCount > 0; // Return true if a lecturer was deleted
+    } catch (error) {
+      console.error('Error deleting lecturer:', error);
+      return false;
+    }
+};
+
+module.exports = { getLecturers, deleteLecturerById };
