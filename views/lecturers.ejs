@@ -11,7 +11,27 @@
 
 <body>
 
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Action</th>
+        </tr>
+        
+        <% lecturers.forEach((lecturer) => { %>
+            <tr>
+                <td><%= lecturer._id %></td>
+                <td><%= lecturer.name %></td>
+                <td><%= lecturer.did %></td>
+                <td>
+                    <a href="/lecturers/delete/<%= lecturer._id %>">Delete</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
     <br>
     <a href="/">Home</a>
-    
+
 </body>
