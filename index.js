@@ -121,7 +121,7 @@ app.get("/grades", (req, res) => {
 
 //Lecturers Page
 //Make sure student id appears at top of page, with menu to navigate to 3 different menus
-// Route: View all lecturers
+//View all lecturers
 app.get('/lecturers', async (req, res) => {
     try {
         // Fetch all lecturers from the MongoDB collection
@@ -134,3 +134,19 @@ app.get('/lecturers', async (req, res) => {
     }
 });
 
+//Routing to delete a lecturer by ID
+app.delete('/lecturers/:id', async (req, res) => {
+    const {id} = req.params; // Get the lecturer's ID from the URL
+    try {
+    const success = await myLecturers.deleteLecturerById(id);
+        if (success) {
+            res.status(200).send("Lecturer has been deleted.");
+        } 
+        else {
+            res.status(404).send("Lecturer not found.");
+        }
+    } 
+    catch (err) {
+      res.status(500).send("Error deleting lecturer: " + err);
+    }
+});
